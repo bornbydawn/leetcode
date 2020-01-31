@@ -94,3 +94,5 @@ target/
 
 # End of https://www.gitignore.io/api/intellij
 /src/main/java/Test.java
+
+.DS_Store
