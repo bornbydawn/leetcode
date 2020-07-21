@@ -1,38 +1,63 @@
-import java.util.*;
+package BuyAndSellStock;
 
 // https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
 public class BestTimeBuySellStock {
 
-    public int maxProfit(int[] prices, int fee) {
-        int[][] store = new int[prices.length][prices.length + 1];
-        Arrays.stream(store).forEach(a -> Arrays.fill(a, -1));
-        return maxProfit(0, prices.length, prices, fee, store);
-    }
+//    public int maxProfit(int[] prices, int fee) {
+////        int[][] store = new int[prices.length][prices.length + 1];
+////        Arrays.stream(store).forEach(a -> Arrays.fill(a, -1));
+////        return maxProfit(0, prices.length, prices, fee, store);
+////    }
+////
+////    private int maxProfit(int i, int j, int[] prices, int fee, int[][] store){
+////        if(i == prices.length) return 0;
+////
+////        if(store[i][j] != -1) return store[i][j];
+////
+////        if(j != prices.length){
+////
+////            int profit = prices[i] - prices[j] - fee;
+////
+////            //if profit on selling
+////            if(profit > 0){
+////                return store[i][j] = Math.max(profit + maxProfit(i + 1, prices.length, prices, fee, store)
+////                        ,maxProfit(i + 1, j, prices, fee, store));
+////
+////            }
+////            else{
+////                return store[i][j] = maxProfit(i+1, j, prices, fee, store);
+////            }
+////        }
+////        else{
+////            return store[i][j] = Math.max(maxProfit(i + 1, i, prices, fee, store)
+////                    , maxProfit(i + 1, prices.length, prices, fee, store));
+////
+////        }
+////    }
 
-    private int maxProfit(int i, int j, int[] prices, int fee, int[][] store){
-        if(i == prices.length) return 0;
+    public int maxProfit(int prices[], int fee){
+        if(prices == null || prices.length <= 1) return 0;
 
-        if(store[i][j] != -1) return store[i][j];
+//        int hold[] = new int[prices.length];
+//        int notHold[] = new int[prices.length];
+//
+//        hold[0] = -prices[0];
+//        notHold[0] = 0;
+//
+//        for(int i = 1; i < prices.length; i++){
+//            hold[i] = Math.max(hold[i - 1], notHold[i - 1] - prices[i]);
+//            notHold[i] = Math.max(notHold[i - 1], hold[i -1] + prices[i] - fee);
+//        }
+        //return notHold[prices.length - 1];
 
-        if(j != prices.length){
-
-            int profit = prices[i] - prices[j] - fee;
-
-            //if profit on selling
-            if(profit > 0){
-                return store[i][j] = Math.max(profit + maxProfit(i + 1, prices.length, prices, fee, store)
-                        ,maxProfit(i + 1, j, prices, fee, store));
-
-            }
-            else{
-                return store[i][j] = maxProfit(i+1, j, prices, fee, store);
-            }
+        int hold = -prices[0];
+        int notHold = 0;
+        for(int i = 1; i < prices.length; i++){
+            hold = Math.max(hold, notHold - prices[i]);
+            notHold = Math.max(notHold, hold + prices[i] - fee);
         }
-        else{
-            return store[i][j] = Math.max(maxProfit(i + 1, i, prices, fee, store)
-                    , maxProfit(i + 1, prices.length, prices, fee, store));
 
-        }
+        return notHold;
     }
 
     public static void main(String[] args) {

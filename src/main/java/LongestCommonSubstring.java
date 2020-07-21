@@ -45,8 +45,8 @@ public class LongestCommonSubstring {
     }
 
     public static void main(String[] args) {
-        String s1 = "abcda";
-        String s2 = "adcba";
+        String s1 = "sea";
+        String s2 = "eat";
 
         System.out.println(getLongestCommonSubstringLength(s1, s2));
     }
