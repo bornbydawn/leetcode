@@ -37,7 +37,7 @@ public class ArrayDiagonalTraverse {
                 }
                 if(x > xMax){
                     x = xMax;
-                    y = 
+                    //y =
                     break;
                 }
                 result[i++] = matrix[x][y];
