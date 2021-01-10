@@ -1,4 +1,4 @@
-package Arrays;
+package SlidingWindow;
 
 public class NonDecreasingArray {
 
