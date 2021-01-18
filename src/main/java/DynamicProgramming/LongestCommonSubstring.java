@@ -1,3 +1,5 @@
+package DynamicProgramming;
+
 public class LongestCommonSubstring {
 
     private static String getLongestCommonSubstringLength(String s1, String s2){

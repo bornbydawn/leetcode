@@ -1,3 +1,5 @@
+package DynamicProgramming;
+
 public class LongestPalindromicSubsequence {
 
     static int getLongestCommonSubsequence(char[] s1, char[] s2) {
