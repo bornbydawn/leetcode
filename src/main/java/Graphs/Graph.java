@@ -31,12 +31,18 @@ public class Graph<T> {
         adjList.get(v).addLast(u);
     }
 
-    public void printGraph() {
-        for (Entry<T, LinkedList<T>> entry : adjList.entrySet()) {
+    /***
+     * Please also be aware that there is absolutely no relationship between the class-level type variable I and the static method type variable U.
+     * use a different variable name when declaring generic methods, static or otherwise, inside generic classes.
+     * @param graph
+     * @param <U>
+     */
+    public static <U> void printGraph(Graph<U> graph) {
+        for (Entry<U, LinkedList<U>> entry : graph.getAdjList().entrySet()) {
             System.out.println("\nAdjacency list of vertex" + entry.getKey());
             System.out.print("head");
-            for (T adjacents : entry.getValue()) {
-                System.out.print(" -> " + adjacents.toString());
+            for (U adjacent : entry.getValue()) {
+                System.out.print(" -> " + adjacent.toString());
             }
             System.out.println();
         }

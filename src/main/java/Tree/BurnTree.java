@@ -30,7 +30,7 @@ public class BurnTree {
 
         Graph<TreeNode> graph = new Graph<>();
         populateAdjacencyList(root, graph);
-        //graph.printGraph();
+        //Graph.printGraph(graph);
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(target);
         Set<TreeNode> burnt = new HashSet<>();
