@@ -30,7 +30,7 @@ public class BurnTree {
 
         Graph<TreeNode> graph = new Graph<>();
         populateAdjacencyList(root, graph);
-        graph.printGraph();
+        //graph.printGraph();
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(target);
         Set<TreeNode> burnt = new HashSet<>();
@@ -40,17 +40,12 @@ public class BurnTree {
             while(size > 0){
                 size--;
                 TreeNode treeNode = queue.poll();
-                if(burnt.contains(treeNode)) continue;
+                //if(burnt.contains(treeNode)) continue;
                 System.out.print(treeNode.val + " ");
                 burnt.add(treeNode);
-                // if(treeNode.left != null && !burnt.contains(treeNode.left)){
-                //     queue.add(treeNode.left);
-                // }
-                // if(treeNode.right != null && !burnt.contains(treeNode.right)){
-                //     queue.add(treeNode.right);
-                // }
                 if(graph.getAdjList().containsKey(treeNode)){
-                    queue.addAll(graph.getAdjList().get(treeNode));
+                    graph.getAdjList().get(treeNode).stream().filter(item -> !burnt.contains(item)).forEach(node -> queue.add(node));
+                    //queue.addAll(graph.getAdjList().get(treeNode));
                 }
             }
             System.out.println();

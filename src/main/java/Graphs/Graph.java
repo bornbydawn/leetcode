@@ -9,9 +9,10 @@ public class Graph<T> {
     Map<T, LinkedList<T>> adjList;
 
     public Graph() {
-        adjList = new HashMap<T, LinkedList<T>>();
+        adjList = new HashMap<>();
     }
-    public Map<T, LinkedList<T>> getAdjList(){
+
+    public Map<T, LinkedList<T>> getAdjList() {
         return adjList;
     }
 
