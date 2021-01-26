@@ -16,6 +16,10 @@ public class MinimumTimeToBurnTreeStartingFromLeafNode {
         root.left.left = new TreeNode(4);
         root.left.right = new TreeNode(5);
         root.right.left = new TreeNode(6);
+
+        root.right.right = new TreeNode(12);
+        root.right.right.right = new TreeNode(13);
+
         root.left.left.left = new TreeNode(8);
         root.left.right.left = new TreeNode(9);
         root.left.right.right = new TreeNode(10);
