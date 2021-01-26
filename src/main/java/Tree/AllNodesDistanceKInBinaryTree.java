@@ -2,15 +2,13 @@ package Tree;
 
 import Graphs.Graph;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
-public class BurnTree {
+public class AllNodesDistanceKInBinaryTree {
+
     public static void main(String[] args) {
 
-        BurnTree object = new BurnTree();
         TreeNode root = new TreeNode(10);
         root.left = new TreeNode(12);
         root.right = new TreeNode(13);
@@ -23,31 +21,42 @@ public class BurnTree {
         root.right.right.left = new TreeNode(23);
         root.right.right.right = new TreeNode(24);
 
-        object.burnTree(root, root.right.left);
+        AllNodesDistanceKInBinaryTree object = new AllNodesDistanceKInBinaryTree();
+        System.out.println(object.distanceK(root, root.right, 2));
     }
 
-    void burnTree(TreeNode root, TreeNode target) {
+    public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
 
-        Graph<TreeNode> graph = new Graph<>();
+        Graph<TreeNode> graph = new Graph();
         populateAdjacencyList(root, graph);
-        //Graph.printGraph(graph);
+
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(target);
-        Set<TreeNode> burnt = new HashSet<>();
+        Set<TreeNode> visited = new HashSet<>();
+        List<Integer> distanceKNodesList = Collections.EMPTY_LIST;
 
+        boolean toBreak = false;
+        int distance = 0;
         while (!queue.isEmpty()) {
             int size = queue.size();
             while (size > 0) {
+                if (distance == K) {
+                    distanceKNodesList = queue.stream().map(t -> t.val).collect(Collectors.toList());
+                    toBreak = true;
+                    break;
+                }
                 size--;
                 TreeNode treeNode = queue.poll();
-                System.out.print(treeNode.val + " ");
-                burnt.add(treeNode);
+                visited.add(treeNode);
                 if (graph.getAdjList().containsKey(treeNode)) {
-                    graph.getAdjList().get(treeNode).stream().filter(item -> !burnt.contains(item)).forEach(node -> queue.add(node));
+                    graph.getAdjList().get(treeNode).stream().filter(item -> !visited.contains(item)).forEach(node -> queue.add(node));
                 }
             }
-            System.out.println();
+            if (toBreak) break;
+            distance++;
         }
+
+        return distanceKNodesList;
 
     }
 
