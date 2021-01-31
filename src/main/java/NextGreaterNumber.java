@@ -14,19 +14,6 @@ public class NextGreaterNumber {
         arr[j] = temp;
     }
 
-    private void reverse(char[] arr, int i, int j){
-        while(i < j){
-            char temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-
-            i++;
-            j--;
-        }
-       
-    }
-
-
     public int nextGreaterElement(int n) {
         
         char[] number = Integer.toString(n).toCharArray();
@@ -53,7 +40,6 @@ public class NextGreaterNumber {
 
         swap(number, firstMaxToMin - 1, indexWithMinGreaterElement);
         Arrays.sort(number, firstMaxToMin, number.length);
-        //reverse(number, firstMaxToMin, number.length - 1);
 
         try{
             return Integer.parseInt(new String(number));
