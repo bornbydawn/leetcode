@@ -1,6 +1,6 @@
 package Tree;
 
-import Graphs.Graph;
+import Graphs.MapGraph;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -27,7 +27,7 @@ public class AllNodesDistanceKInBinaryTree {
 
     public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
 
-        Graph<TreeNode> graph = new Graph();
+        MapGraph<TreeNode> graph = new MapGraph();
         populateAdjacencyList(root, graph);
 
         Queue<TreeNode> queue = new LinkedList<>();
@@ -60,7 +60,7 @@ public class AllNodesDistanceKInBinaryTree {
 
     }
 
-    void populateAdjacencyList(TreeNode root, Graph<TreeNode> graph) {
+    void populateAdjacencyList(TreeNode root, MapGraph<TreeNode> graph) {
         if (root == null)
             return;
 

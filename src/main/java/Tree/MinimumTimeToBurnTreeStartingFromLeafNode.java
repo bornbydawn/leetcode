@@ -1,6 +1,6 @@
 package Tree;
 
-import Graphs.Graph;
+import Graphs.MapGraph;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -29,7 +29,7 @@ public class MinimumTimeToBurnTreeStartingFromLeafNode {
 
     public int minCost(TreeNode root, TreeNode leafNode) {
 
-        Graph<TreeNode> graph = new Graph();
+        MapGraph<TreeNode> graph = new MapGraph();
         populateAdjacencyList(root, graph);
 
         Queue<TreeNode> queue = new LinkedList<>();
@@ -54,7 +54,7 @@ public class MinimumTimeToBurnTreeStartingFromLeafNode {
 
     }
 
-    void populateAdjacencyList(TreeNode root, Graph<TreeNode> graph) {
+    void populateAdjacencyList(TreeNode root, MapGraph<TreeNode> graph) {
         if (root == null)
             return;
 

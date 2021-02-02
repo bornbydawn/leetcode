@@ -5,10 +5,10 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class Graph<T> {
+public class MapGraph<T> {
     Map<T, LinkedList<T>> adjList;
 
-    public Graph() {
+    public MapGraph() {
         adjList = new HashMap<>();
     }
 
@@ -37,7 +37,7 @@ public class Graph<T> {
      * @param graph
      * @param <U>
      */
-    public static <U> void printGraph(Graph<U> graph) {
+    public static <U> void printGraph(MapGraph<U> graph) {
         for (Entry<U, LinkedList<U>> entry : graph.getAdjList().entrySet()) {
             System.out.println("\nAdjacency list of vertex" + entry.getKey());
             System.out.print("head");

@@ -1,6 +1,6 @@
 package Tree;
 
-import Graphs.Graph;
+import Graphs.MapGraph;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -28,7 +28,7 @@ public class BurnTree {
 
     void burnTree(TreeNode root, TreeNode target) {
 
-        Graph<TreeNode> graph = new Graph<>();
+        MapGraph<TreeNode> graph = new MapGraph<>();
         populateAdjacencyList(root, graph);
         //Graph.printGraph(graph);
         Queue<TreeNode> queue = new LinkedList<>();
@@ -51,7 +51,7 @@ public class BurnTree {
 
     }
 
-    void populateAdjacencyList(TreeNode root, Graph<TreeNode> graph) {
+    void populateAdjacencyList(TreeNode root, MapGraph<TreeNode> graph) {
         if (root == null)
             return;
 
