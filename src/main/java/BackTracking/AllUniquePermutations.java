@@ -17,7 +17,7 @@ public class AllUniquePermutations {
 
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> answer = new LinkedList<>();
-        Arrays.sort(nums);
+        //Arrays.sort(nums);
         permute(nums, 0, nums.length - 1, answer);
         return answer;
     }
@@ -29,7 +29,7 @@ public class AllUniquePermutations {
             return;
         } else {
             for (int i = l; i <= r; i++) {
-                if(shouldSwap(arr, i)){
+                if(shouldSwap(arr, l, i)){
                     swap(arr, l, i);
                     permute(arr, l + 1, r, answer);
                     swap(arr, l, i);
@@ -38,9 +38,9 @@ public class AllUniquePermutations {
         }
     }
 
-    private boolean shouldSwap(int[] arr, int l){
-        for(int i = 0; i < l; i++){
-            if(arr[i] == arr[l]){
+    private boolean shouldSwap(int[] arr, int loopStart, int current){
+        for(int i = loopStart; i < current; i++){
+            if(arr[i] == arr[current]){
                 return false;
             }
         }
