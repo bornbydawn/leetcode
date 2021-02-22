@@ -29,19 +29,13 @@ public class LongestWordinDictionarythroughDeleting {
 
         });
 
-        int maxLength = 0;
-        String answer = new String();
         for (int i = d.size() - 1; i >= 0; i--) {
             boolean possible =  isSubSequence(d.get(i), s);
-            if (possible && (d.get(i).length() > maxLength)) {
-                maxLength = d.get(i).length();
-                answer = d.get(i);
-            }
-            if (i != 0 && maxLength >= d.get(i - 1).length()) {
-                break;
+            if (possible) {
+                return d.get(i);
             }
         }
-        return answer;
+        return new String();
     }
 
     private boolean isSubSequence(String str1, String str2)
