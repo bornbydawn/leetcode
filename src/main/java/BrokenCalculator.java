@@ -15,8 +15,8 @@ public class BrokenCalculator {
         //  int Y = 3;
         
         
-        //   int X = 3;
-        //   int Y = 10;
+           int X = 3;
+           int Y = 10;
 
         System.out.println(new BrokenCalculator().brokenCalc(X, Y));
     }
